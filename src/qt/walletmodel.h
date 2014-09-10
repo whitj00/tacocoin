@@ -1,5 +1,4 @@
-#ifndef WALLETMODEL_H
-#define WALLETMODEL_H
+#ifndef WALLETMODEL_H define WALLETMODEL_H
 
 #include <QObject>
 #include <vector>
@@ -27,6 +26,8 @@ class SendCoinsRecipient
 public:
     QString address;
     QString label;
+    QString narration;
+    int typeInd;
     qint64 amount;
 };
 
@@ -49,6 +50,7 @@ public:
         DuplicateAddress,
         TransactionCreationFailed, // Error returned when wallet is still locked
         TransactionCommitFailed,
+        NarrationTooLong,
         Aborted
     };
 

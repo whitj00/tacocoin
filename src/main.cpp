@@ -397,17 +397,25 @@ bool CTransaction::IsStandard(string& strReason) const
             return false;
         }
     }
+    unsigned int nTxnOut = 0;
     BOOST_FOREACH(const CTxOut& txout, vout) {
         if (!::IsStandard(txout.scriptPubKey)) {
             strReason = "scriptpubkey";
             return false;
+        } else
+        {
+            if (txout.nValue == 0)
+                return false;
+            nTxnOut++;
         }
         if (txout.IsDust()) {
             strReason = "dust";
             return false;
         }
     }
-    return true;
+    // only one OP_RETURN txout per txn out is permitted
+    if (nDataOut > nTxnOut) {
+         return false;
 }
 
 //

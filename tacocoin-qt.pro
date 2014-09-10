@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = tacocoin-qt
 macx:TARGET = "Tacocoin-Qt"
-VERSION = 0.9.0.0
+VERSION = 0.9.1.0
 INCLUDEPATH += src src/json src/qt
 QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -164,6 +164,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/db.h \
     src/walletdb.h \
     src/script.h \
+    src/stealth.h \
     src/init.h \
     src/bloom.h \
     src/mruset.h \
@@ -289,6 +290,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/scrypt.cpp \
     src/noui.cpp \
     src/leveldb.cpp \
+    src/stealth.cpp \
     src/txdb.cpp \
     src/qt/splashscreen.cpp
 
